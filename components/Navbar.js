@@ -1,31 +1,43 @@
 import Link from "next/link";
 
 export default function Navbar() {
-  const user = null;
-  const username = true;
+  const user = true;
+  const username = "ghassen";
 
   return (
     <nav className="navbar">
       <ul>
+        <li>
+          <Link href="/">
+            <button className="btn-logo">NXT</button>
+          </Link>
+        </li>
+
+        {/* user is signed-in and has username */}
         {username && (
           <>
-            <li>
-              <Link href="/">Home</Link>
+            <li className="push-left">
+              <button>Sign Out</button>
             </li>
             <li>
-              <Link href="/news">News</Link>
+              <Link href="/admin">
+                <button className="btn-blue">Write Posts</button>
+              </Link>
             </li>
             <li>
-              <Link href="/contact">Contact</Link>
-            </li>
-            <li class="active">
-              <Link href="/about">About</Link>
+              <Link href={`/${username}`}>
+                <img src={user?.photoURL || "/hacker.png"} />
+              </Link>
             </li>
           </>
         )}
+
+        {/* user is not signed OR has not created username */}
         {!username && (
-          <li class="active">
-            <Link href="/about">About</Link>
+          <li>
+            <Link href="/enter">
+              <button className="btn-blue">Log in</button>
+            </Link>
           </li>
         )}
       </ul>

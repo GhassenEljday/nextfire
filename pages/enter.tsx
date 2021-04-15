@@ -1,8 +1,9 @@
 import { auth, googleAuth } from "../lib/firebase";
-import { useUserData } from "../lib/hook";
+import { useContext } from "react";
+import { UserContext } from "../lib/context";
 
 export default function Enter() {
-  const { user, username } = useUserData();
+  const { user, username } = useContext(UserContext);
 
   return (
     <main>

@@ -1,15 +1,15 @@
 import Link from "next/link";
+import { useUserData } from "../lib/hook";
 
 export default function Navbar() {
-  const user = true;
-  const username = "ghassen";
+  const { user, username } = useUserData();
 
   return (
     <nav className="navbar">
       <ul>
         <li>
           <Link href="/">
-            <button className="btn-logo">NXT</button>
+            <button className="btn-logo">GEJ</button>
           </Link>
         </li>
 
@@ -26,7 +26,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link href={`/${username}`}>
-                <img src={user?.photoURL || "/hacker.png"} />
+                <img src={user?.photoURL || "/user.png"} />
               </Link>
             </li>
           </>
